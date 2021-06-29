@@ -71,7 +71,7 @@
       </div>
       <div class="loader" v-if="loadingApproval">
         <Block />
-        Will cost 1 Otter. Waiting for Approval
+        Will cost {{fee}} Otter. Waiting for Approval
       </div>
       <div class="example-footer">
         <div class="btn-group">
@@ -144,7 +144,7 @@
 }
 .example-full .filename {
   margin-bottom: 0.3rem;
-  color: white;
+  color: rgb(85, 147, 240);
 }
 .example-full .btn-is-option {
   margin-top: 0.25rem;
@@ -272,6 +272,11 @@ export default {
       },
     };
   },
+  computed: {
+    feeInt: function () {
+      return parseInt(this.fee);
+    }
+  },
   watch: {
     "editFile.show"(newValue, oldValue) {
       // 关闭了 自动删除 error
@@ -306,11 +311,10 @@ export default {
   methods: {
     async approve() {
       this.loadingApproval = true;
-
       await this.Otter.methods
         .increaseAllowance(
-          "0x59Dc3F3eE79A2fF3a1d335B96618b3ef824A6822",
-          this.web3.utils.toBN(this.fee * 10 ** 18)
+          "0x501C5074bEd28987d50ce493018d7ccdE6B7C2d9",
+          this.web3.utils.toBN(this.feeInt * 10 ** 18)
         )
         .send({ from: this.myAddress })
         .once("transactionHash", function(hash) {

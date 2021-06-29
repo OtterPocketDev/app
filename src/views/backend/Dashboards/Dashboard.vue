@@ -58,12 +58,23 @@
       </div>
       <div style="position: absolute; top:8em; left: 1em; ">
         <a
-          href="https://dxsale.app/app/pages/defipresale?saleID=14&chain=Matic"
+          href="https://quickswap.exchange/"
         >
           <span
             style="padding: 0.5em 1em; border: 1px solid #46cdfd; border-radius: 1em; color:#46cdfd;"
           >
-            Buy OTTER
+            Buy OTTER 
+          </span>
+        </a>
+      </div>
+      <div style="position: absolute; top:12em; left: 1em; ">
+        <a
+          href="https://matic.supply/"
+        >
+          <span
+            style="padding: 0.5em 1em; border: 1px solid #46cdfd; border-radius: 1em; color:#46cdfd; font-size: 0.7em;"
+          >
+            Need Matic for TX?
           </span>
         </a>
       </div>
@@ -77,11 +88,15 @@
         <a href="https://twitter.com/Otter_pocket">
           <img
             src="@/assets/images/icon/twitter.png"
-            style="width: 2em; margin-right: 1em;"
+            style="width: 2em; margin-right: 0.5em;"
           />
         </a>
         <a href="https://t.me/otterpocketstorage">
-          <img src="@/assets/images/icon/telegram.png" style="width: 2em;" />
+          <img src="@/assets/images/icon/telegram.png" style="width: 2em; margin-right: 0.5em;" />
+        </a>
+        <a href="https://otterpocket.medium.com/">
+                  <img src="@/assets/images/icon/medium.png" style="width: 2em;" />
+
         </a>
       </div>
     </div>
@@ -168,7 +183,7 @@
             <h4 @click="showUploadModal = true">Upload</h4>
           </div>
         </div>
-        <div v-if="showUploadModal" class="uploadModal">
+        <div v-if="showUploadModal && walletAccount && network == 137" class="uploadModal">
           <div class="uploadModal__toolbar">
             <h4>Upload your File</h4>
             <h4 class="close" @click="showUploadModal = false">X</h4>
@@ -204,7 +219,8 @@
                   <tbody>
                     <tr v-for="(file, index) in Files" :key="index">
                       <td>
-                        <div class="d-flex align-items-center">
+                             <a  :href="`https://ipfs.infura.io/ipfs/${file.fileHash}`">
+                             <div class="d-flex align-items-center">
                           <div :class="file.fileColor">
                             <i :class="file.fileIcon"></i>
                           </div>
@@ -212,6 +228,7 @@
                             file.fileName
                           }}</span>
                         </div>
+                      </a>
                       </td>
                       <td>{{ file.fileType }}</td>
                       <td>{{ convertBytes(file.fileSize) }}</td>
@@ -256,7 +273,7 @@ export default {
     return {
       showSideMenu: false,
       uploadFee: 0,
-      otterPrice: 0.37,
+      otterPrice: 0.03,
       walletAccount: null,
       network: 0,
       polygonBalance: 0,
@@ -299,11 +316,11 @@ export default {
         if (this.network == 137) {
           this.Otter = new this.web3.eth.Contract(
             OtterToken,
-            "0xB3b74aF14b8CF2d5a7da045575fb6Db161Cdb871"
+            "0xE718EDA678AFF3F8d1592e784652BcbEeb49e352"
           );
           this.Pocket = new this.web3.eth.Contract(
             OtterPocket,
-            "0x59Dc3F3eE79A2fF3a1d335B96618b3ef824A6822"
+            "0x501C5074bEd28987d50ce493018d7ccdE6B7C2d9"
           );
           this.otterBalance = this.web3.utils.fromWei(
             await this.Otter.methods.balanceOf(this.walletAccount[0]).call(),
@@ -405,13 +422,11 @@ export default {
   width: 95vw;
   left: 2.5%;
   height: 80vh;
-  border: 1px solid #46cdfd;
-  background: linear-gradient(
-    90deg,
-    rgb(38, 126, 220) 0%,
-    rgb(44, 177, 238) 20%,
-    #46cdfd 100%
-  );
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  
+  backdrop-filter: blur(10px);
   z-index: 9009;
   border-radius: 2em;
   &__toolbar {
@@ -419,6 +434,7 @@ export default {
     border-radius: 2em 2em 0 0;
     padding: 2em;
     display: flex;
+    text-align: center;
     justify-content: space-between;
   }
 }
