@@ -205,12 +205,16 @@ import ImageCompressor from "@xkeshi/image-compressor";
 import FileUpload from "vue-upload-component";
 import Spinner from "../../loaders/spinner.vue";
 import Block from "../../loaders/block.vue";
-
+const auth =
+  'Basic ' + Buffer.from('1udeNiO9Z0ng22lH97ol0s27ZM8' + ':' + 'da38ac4c32eb23fb4678da36efbcd9f2').toString('base64')
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
+    headers: {
+    authorization: auth
+  }
 });
 export default {
   components: {
