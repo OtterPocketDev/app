@@ -205,17 +205,9 @@ import ImageCompressor from "@xkeshi/image-compressor";
 import FileUpload from "vue-upload-component";
 import Spinner from "../../loaders/spinner.vue";
 import Block from "../../loaders/block.vue";
-const auth =
-  'Basic ' + Buffer.from('1udeNiO9Z0ng22lH97ol0s27ZM8' + ':' + 'da38ac4c32eb23fb4678da36efbcd9f2').toString('base64')
-const ipfsClient = require("ipfs-http-client");
-const ipfs = ipfsClient({
-  host: "ipfs.infura.io",
-  port: 5001,
-  protocol: "https",
-    headers: {
-    authorization: auth
-  }
-});
+const axios = require('axios');
+const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+
 export default {
   components: {
     FileUpload,
@@ -337,24 +329,31 @@ export default {
     },
     upload() {
       this.loadingIPFS = true;
-      ipfs.add(this.fileBuffer, (error, result) => {
+      var data = new FormData();
+      data.append('file',this.files[0].file);
+      axios.post(url, data, {
+        maxBodyLength: 'Infinity',
+        headers: {
+          'Content-Type': `multipart/form-data;`,
+          pinata_api_key:'4868d7bfb3a5c10959ea',
+          pinata_secret_api_key:'c43dd3f6b7ec9effc72e733643cca1298aa7563425cb7930650cad9e7f192633'
+          }
+        }).then((response)=> {
         const file = this.files[0];
-        if (error) {
-          console.log(error);
-          return;
-        }
+
         this.loadingIPFS = false;
+        this.loadingBlockchain = true;
+
         this.Pocket.methods
           .uploadFile(
-            result[0].hash,
-            result[0].size,
+            response.data.IpfsHash,
+            response.data.PinSize,
             file.type,
             file.name,
             "Description"
           )
           .send({ from: this.myAddress })
           .on("transactionHash", (hash) => {
-            this.loadingBlockchain = true;
             this.hash = hash;
             setInterval(() => {
               this.web3.eth.getTransaction(hash, (err, result) => {
@@ -369,7 +368,12 @@ export default {
           .on("error", (e) => {
             window.alert("Error", e);
           });
-      });
+     
+        })
+        .catch((error)=> {
+          console.log(error);
+        })
+         
     },
     formatSize(size) {
       if (size > 1024 * 1024 * 1024 * 1024) {

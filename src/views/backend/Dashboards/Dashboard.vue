@@ -120,7 +120,7 @@
           <div
             class="card card-block card-stretch card-height iq-welcome"
             :style="
-              `background: url(${require('@/assets/images/layouts/mydrive/background.png')}) no-repeat scroll right center; background-color: #ffffff; background-size: contain;`
+              `background: url(${require('@/assets/images/appFiles.png')}) no-repeat scroll right center; background-color: #ffffff; background-size: contain;`
             "
           >
             <div class="card-body property2-content">
@@ -237,7 +237,7 @@
                       </td>
                       <td>
                         <a
-                          :href="`https://ipfs.infura.io/ipfs/${file.fileHash}`"
+                          :href="`https://gateway.pinata.cloud/ipfs/${file.fileHash}`"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -449,7 +449,7 @@ export default {
   justify-content: space-between;
   background: linear-gradient(
     90deg,
-    rgba(3, 0, 36, 1) 0%,
+    #675ca8 0%,
     rgba(9, 9, 121, 1) 20%,
     rgba(0, 212, 255, 1) 100%
   );
