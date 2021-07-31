@@ -1,7 +1,7 @@
 <template>
   <div class="example-full">
     <div v-show="$refs.upload && $refs.upload.dropActive" class="drop-active">
-      <h3>Drop files here to upload</h3>
+      <h3>Drop files here to see</h3>
     </div>
     <div class="upload" v-show="!isOption">
       <div class="table-responsive">

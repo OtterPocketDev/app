@@ -5,7 +5,7 @@
         <a href="https://otterpocket.io">
           <img src="@/assets/images/Otter-Title.png" alt="" />
         </a>
-        Alpha 1.0.0
+        <h6>Alpha <span>1.0.1</span></h6>
       </div>
 
       <div class="nav-right">
@@ -51,17 +51,18 @@
         <i class="ri-menu-fold-line"></i>
       </span>
       <div
-        style="position: absolute; top:2em; left: 1em; font-weight: 600; color:#46cdfd;"
+        style="position: absolute; top:2em; left: 1em; font-weight: 600; color:#ffffff;"
       >
         Upload Price: <br />
         {{ uploadFee }} OTTER
       </div>
       <div style="position: absolute; top:8em; left: 1em; ">
         <a
-          href="https://quickswap.exchange/"
+          href="https://quickswap.exchange/#/swap?outputCurrency=0xe718eda678aff3f8d1592e784652bcbeeb49e352"
         >
+        
           <span
-            style="padding: 0.5em 1em; border: 1px solid #46cdfd; border-radius: 1em; color:#46cdfd;"
+            style="padding: 0.5em 1em; border: 1px solid #ffffff; border-radius: 1em; color:#ffffff;"
           >
             Buy OTTER 
           </span>
@@ -72,82 +73,119 @@
           href="https://matic.supply/"
         >
           <span
-            style="padding: 0.5em 1em; border: 1px solid #46cdfd; border-radius: 1em; color:#46cdfd; font-size: 0.7em;"
+            style="padding: 0.5em 1em; border: 1px solid #ffffff; border-radius: 1em; color:#ffffff; font-size: 0.7em;"
           >
-            Need Matic for TX?
+            Polygon Faucet
           </span>
         </a>
+        <div style="position: absolute; bottom:-10em; left: -0.6em; font-weight: 600;">
+        
+          
+          <h6>Otter Price:</h6>
+         
+          </div>
       </div>
-      <div style="position: absolute; bottom:8em; left: 2em; font-weight: 600;">
-        <a href="https://quickchart.app/">
+      <div style="position: absolute; bottom:8em; left: 1.25em; font-weight: 600;">
+        <a href="https://quickchart.app/token/0xe718eda678aff3f8d1592e784652bcbeeb49e352">
           <img src="@/assets/images/otter-icon.png" style="width: 2em;" />
-          <span style="color:#46cdfd; "> ${{ otterPrice }}</span></a
+          <span style="color:#ffffff;"> ${{ otterPrice }}</span></a
         >
       </div>
-      <div style="position: absolute; bottom:4em; left: 2em; ">
+      <div style="position: absolute; bottom:4em; left: 0.8em; ">
         <a href="https://twitter.com/Otter_pocket">
           <img
-            src="@/assets/images/icon/twitter.png"
-            style="width: 2em; margin-right: 0.5em;"
+            src="@/assets/images/icon/OPTWITTER.svg"
+            style="width: 2.5em; margin-right: 0.5em;"
           />
         </a>
         <a href="https://t.me/otterpocketstorage">
-          <img src="@/assets/images/icon/telegram.png" style="width: 2em; margin-right: 0.5em;" />
+          <img src="@/assets/images/icon/OPTELEGRAM.svg" style="width: 2.5em; margin-right: 0.5em;" />
         </a>
         <a href="https://otterpocket.medium.com/">
-                  <img src="@/assets/images/icon/medium.png" style="width: 2em;" />
+                  <img src="@/assets/images/icon/OPMEDIUM.svg" style="width: 2.5em;" />
 
         </a>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
+           
+    <div class="container-fluid" 
+    >
+     
+      <div class="row"
+      >
         <div class="col-lg-12">
           <div
-            class="card-transparent card-block card-stretch card-height mb-3"
+            class="card-transparent card-block card-stretch card-height mb-0"
           >
             <div class="d-flex justify-content-between">
               <div class="select-dropdown input-prepend input-append">
                 <div class="btn-group">
-                  <h4 class="mb-2">My Pocket</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
+         
         <div class="col-lg-8">
           <div
             class="card card-block card-stretch card-height iq-welcome"
-            :style="
-              `background: url(${require('@/assets/images/appFiles.png')}) no-repeat scroll right center; background-color: #ffffff; background-size: contain;`
-            "
+            
           >
             <div class="card-body property2-content">
               <div class="d-flex flex-wrap align-items-center">
                 <div class="col-lg-6 col-sm-6 p-0">
+                  <h3 class="mb-3" v-if="network == 1">
+                    Error!
+                  </h3>
                   <p class="mb-3" v-if="network == 1">
-                    You are connected to Ethereum Network! Transaction Fees are
-                    a way too high for this network so the Otter team decided to
-                    develop on the Polygon Network. Please connect to Polygon
-                    Network. Here's a tutorial
+                    
+                    You are connected to the Ethereum network. Please connect to the Polygon
+                    Network to use Otter. Not sure how?
                     <a
                       href="https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844"
-                      >Connect Polygon Network to metamask</a
+                      >Set up Polygon Network on metamask.</a
                     >
                   </p>
+                  <div style="position: absolute; bottom:0em; top:-2em; left: 24em;" v-if="network == 1">
+          <img src="@/assets/images/OPWGETH.png" alt="" style="width: 15em;"/>
+          </div>
+                  <h3 class="mb-3" v-if="network == 56">
+                    Error!
+                  </h3>
                   <p class="mb-3" v-if="network == 56">
-                    You are connected to BSC Network! Transaction Fees are a
-                    little high for this network so the Otter team decided to
-                    develop on the Polygon Network. Please connect to Polygon
-                    Netwok. Here's a tutorial
+                    You are connected to the BSC network. Please connect to the Polygon
+                    Network to use Otter. Not sure how?
                     <a
                       href="https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844"
-                      >Connect Polygon Network to metamask</a
+                      >Set up Polygon Network on metamask.</a
                     >
                   </p>
+                  <div style="position: absolute; bottom:0em; top:-2em; left: 24em;" v-if="network == 56">
+          <img src="@/assets/images/OPWGBINANCE.png" alt="" style="width: 15em;"/>
+          </div>
+
                   <h3 class="mb-3" v-if="network == 137">
-                    You are connected to Polygon Network!
+                    Connected!
+                  </h3>
+                  <p class="mb-3" v-if="network == 137">
+                    Upload any file type, any size, always accessible. Please, no illegal content, you will get banned.
+                    <a
+                      href="https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844"
+                      >Read our policy to find out more.</a
+                    >
+                  </p>
+                  
+                  <div style="position: absolute; bottom:0em; top:-1em; left: 24em;" v-if="network == 137">
+          <img src="@/assets/images/appFiles.png" alt="" style="width: 15em;"/>
+          </div>
+          <h3 class="mb-3" v-if="
+                      network &&
+                        network !== 137 &&
+                        network !== 56 &&
+                        network !== 1
+                    ">
+                    Error!
                   </h3>
                   <p
                     class="mb-3"
@@ -158,16 +196,23 @@
                         network !== 1
                     "
                   >
-                    Looks like you are connected to a testnet. Please connect to
-                    Polygon Netwok. Here's a tutorial
+                    You are connected to the Polygon testnet. Please connect to the mainnet
+                    to use Otter. Not sure how?
                     <a
                       href="https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844"
-                      >Connect Polygon Network to metamask</a
+                      >Set up Polygon Network on metamask.</a
                     >
                   </p>
+                  <div style="position: absolute; bottom:0em; top:-2em; left: 24em;" v-if="
+                      network &&
+                        network !== 137 &&
+                        network !== 56 &&
+                        network !== 1
+                    ">
+          <img src="@/assets/images/OPWGTEST.png" alt="" style="width: 15em;"/>
+          </div>
                   <p class="mb-3" v-if="!network">
-                    Looks like you need to connect your web3 browser... Metamask
-                    is the most popular. Here's a tutorial
+                    Connect using MetaMask! Not sure what MetaMask is?
                     <a
                       href="https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844"
                       >Connect Polygon Network to metamask</a
@@ -178,11 +223,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="upload">
-            <h4 @click="showUploadModal = true">Upload</h4>
-          </div>
-        </div>
+        
         <div v-if="showUploadModal && walletAccount && network == 137" class="uploadModal">
           <div class="uploadModal__toolbar">
             <h4>Upload your File</h4>
@@ -201,7 +242,7 @@
           <div class="card card-block card-stretch card-height files-table">
             <div class="card-header d-flex justify-content-between">
               <div class="header-title">
-                <h4 class="card-title">Files in your Pocket</h4>
+                <h4 class="card-title">Files in your pocket:</h4>
               </div>
             </div>
             <div class="card-body pt-0">
@@ -245,13 +286,28 @@
                         </a>
                       </td>
                     </tr>
+                    
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-lg-3">
+          
+          
+          <div class="upload">
+            <img src="@/assets/images/OPTB1.png" style="width: 10em;" @click="showUploadModal = true" alt="Upload"/>
+            
+          </div>
+          <div class="upload">
+            <a  :href="`https://quickchart.app/token/0xe718eda678aff3f8d1592e784652bcbeeb49e352`">
+            <img src="@/assets/images/OPTB3.png" style="width: 10em;" alt="Chart"/>
+            </a>
+          </div>
+        </div>
       </div>
+      
     </div>
   </div>
 </template>
@@ -391,22 +447,25 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container-fluid {
-  margin-top: 3em;
+  margin-top: 0em;
 }
 .upload {
-  margin-left: 1em;
-  padding: 1em 3em;
-  border-radius: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+  padding: 0em 0em;
+  border-radius: 2em;
   background-size: 300% 100%;
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   text-align: center;
   background-image: linear-gradient(
     to right,
-    #198edc,
-    #63c0fd,
-    #80beee,
-    #75d3ff
+    #03b5f4,
+    #03b5f4,
+    #03b5f4,
+    #14bffc
   );
   &:hover {
     background-position: 100% 0;
@@ -441,17 +500,18 @@ export default {
 .header {
   position: fixed;
   top: 0;
-  height: 3em;
+  height: 3.25em;
   left: 0;
   width: 100%;
   padding: 0 2em;
   display: flex;
+  border: #14bffc 2px solid;
   justify-content: space-between;
   background: linear-gradient(
     90deg,
-    #675ca8 0%,
-    rgba(9, 9, 121, 1) 20%,
-    rgba(0, 212, 255, 1) 100%
+    #03b5f4 0%,
+    #03b5f4 20%,
+    #03b5f4 100%
   );
   z-index: 99;
 }
@@ -466,12 +526,13 @@ export default {
 .side-bar {
   position: fixed;
   left: -4px;
-  top: 3em;
+  top: 3.1em;
   width: 10em;
   height: calc(100% - 3em);
   //border: 4px solid #46cdfd;
-  background: white;
-  border-radius: 3px;
+  background: #03b5f4;
+  border: #14bffc 2px solid;
+  border-radius: 0px;
   z-index: 99;
 }
 .connect-address {
@@ -502,14 +563,15 @@ export default {
   margin-top: 0.5em;
 }
 .logo img {
-  width: 15em;
-  margin-top: 0.25em;
+  width:1.5em;
+  margin-top: 0.35em;
+  margin-left: -1.3em;
 }
 .connect-address:hover {
-  background: white;
-  border: 1px solid black;
+  background: #46cdfd;
+  border: white 1px solid;
   cursor: pointer;
-  color: black;
+  color: white;
 }
 .nav-right {
   display: flex;

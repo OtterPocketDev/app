@@ -43,9 +43,9 @@ $grays: map-merge(
   ),
   $grays
 );
-$blue-300: #c6c8f7 !default;
-$blue:    #8f93f6 !default;
-$blue-800:  #6c71e3 !default;
+$blue-300: #92e1fe !default;
+$blue:    #46cdfd !default;
+$blue-800:  #03b5f4 !default;
 
 $red-300:     #ffdaeb !default;
 $red:     #ef9fc4 !default;
@@ -73,9 +73,9 @@ $orange-800:  #fd7e14 !default;
 
 $light: #FAFAFA  !default;
 
-$purple-300:  #cbc0ff !default;
-$purple:      #4731b6 !default;
-$purple-800:  #9e8aff !default;
+$purple-300:  #ae92fe!default;
+$purple:      #7646fd !default;
+$purple-800:  #9b78fe !default;
 
 $pink-300:    #fff1f1 !default;
 $pink:        #FFE0E0 !default;
@@ -86,8 +86,8 @@ $pinkdark:        #FF6265 !default;
 $pinkdark-800:    #2B2626 !default;
 
 
-$indigo:  #6610f2 !default;
-$teal:    #20c997 !default;
+$indigo:  #7646fd !default;
+$teal:    #46fdd2 !default;
 
 // color darkmode
 
@@ -99,7 +99,7 @@ $dark-card-bg:  #121212 !default;
 
 //  color light mode
 
-$bodybg: #fafbfe !default;
+$bodybg: #03b5f4 !default;
 $bodytext : #535f6b !default;
 $titletext : #303030 !default;
 $bordercolor: #f1f1f1 !default;

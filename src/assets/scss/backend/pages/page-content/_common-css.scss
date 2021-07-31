@@ -69,12 +69,12 @@
 
 body {
 	font-family: $font-family-base;
-	font-weight: 400;
+	font-weight: 200;
 	font-style: normal;
 	font-size: 16px;
 	line-height: normal;
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: -20px;
 	color: $body-color;
 	background: $body-bg;
 }
@@ -135,9 +135,11 @@ h5 {
 	font-family: $font-family-title;
 	font-weight: 400;
 	margin: 0px;
-	line-height: 1.5;
-	color: $body-title;
-	font-size: $h5-font-size;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: 0px;
+	color: #ffffff;
+	font-size: $h6-font-size;
 	a {
 		color: inherit;
 	}
@@ -145,12 +147,13 @@ h5 {
 h6 {
 	font-family: $font-family-title;
 	font-weight: 400;
-	margin: 0px;
-	line-height: 1.5;
-	color: $body-title;
+	margin: 15px;
+	margin-top: -15px;
+	line-height: 0px;
+	color: #ffffff;
 	font-size: $h6-font-size;
 	a {
-		color: inherit;
+		color: #46ccfc;
 	}
 }
 button:focus{
