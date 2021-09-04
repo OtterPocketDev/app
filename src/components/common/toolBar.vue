@@ -17,11 +17,9 @@
       style="max-width: 400px;"
     ></v-text-field>
     <v-spacer></v-spacer>
-    <v-btn v-if="!metaMaskInstalled">
-      <a href="https://metamask.io/">
-        <v-icon left color="error">mdi-install</v-icon>
-        <div style="color:#ff5252;">Install Metamask</div></a
-      >
+    <v-btn v-if="!metaMaskInstalled" href="https://metamask.io/">
+      <v-icon color="error">mdi-cloud-download-outline</v-icon>
+      <div style="color:#ff5252;">Metamask</div>
     </v-btn>
     <v-btn
       v-if="!connectedToWeb3 && metaMaskInstalled"
