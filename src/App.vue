@@ -20,3 +20,8 @@ export default {
   }),
 };
 </script>
+<style>
+.v-navigation-drawer--fixed {
+  z-index: 5;
+}
+</style>

@@ -68,7 +68,7 @@
     </v-navigation-drawer>
     <v-navigation-drawer
       v-if="$vuetify.breakpoint.lgAndUp"
-      :mini-variant.sync="mini"
+      expand-on-hover
       permanent
       fixed
       class="side-bar"
@@ -82,28 +82,22 @@
             web3Data.address
           }}</a></v-list-item-title
         >
-
-        <v-btn icon @click.stop="mini = !mini">
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
       </v-list-item>
 
       <v-divider></v-divider>
-      <v-btn
-        color="success"
-        style="width: 80%; margin: 1em 1em;"
-        v-if="!mini"
-        @click="loadFile"
-      >
-        <v-icon>mdi-upload</v-icon> Upload
-      </v-btn>
 
       <v-list dense>
         <v-list-item link v-if="mini">
           <v-list-item-icon>
             <v-icon color="success">mdi-upload</v-icon>
           </v-list-item-icon>
+          <v-list-item-content>
+            <v-btn color="success" @click="loadFile">
+              Upload
+            </v-btn>
+          </v-list-item-content>
         </v-list-item>
+
         <v-list-item
           v-for="item in items"
           :key="item.title"
@@ -286,7 +280,7 @@ export default {
       this.readyToUpload = true;
     },
     loadFile() {
-      this.mini = !this.mini;
+      this.drawer = !this.drawer;
       let fileInputElement = this.$refs.file;
       fileInputElement.click();
     },

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card">
+  <v-card class="card" light>
     <v-card-title>
       <p
         class="mt-4"
@@ -147,15 +147,21 @@ export default {
       this.snackbar = true;
     },
     download() {
-      window.open(this.card.link, "_self");
+      window.open(this.card.link, "_blank");
     },
   },
 };
 </script>
 <style scoped>
 .card {
-  width: 85vw;
-  height: 85vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(240, 248, 255, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .card-info {

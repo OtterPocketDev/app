@@ -35,6 +35,9 @@
         ></v-skeleton-loader>
       </section>
     </vue-horizontal>
+    <v-overlay :value="showViewer" opacity="0">
+      <FileModal :card="cardInViewer" @close="showViewer = false" />
+    </v-overlay>
     <vue-horizontal
       responsive
       class="slider"
@@ -42,16 +45,14 @@
       style="min-height: 12em;"
     >
       <section v-for="card in computedCards" :key="card.id">
-        <v-overlay :value="showViewer" opacity="0.2">
-          <FileModal :card="cardInViewer" @close="showViewer = false" />
-        </v-overlay>
-        <v-card class="file-card" @click="loadViewer(card)" color="transparent">
+        <v-card class="file-card" color="transparent">
           <v-img
             v-if="card.type == 'image'"
             :src="card.link"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="150px"
+            @click="loadViewer(card)"
           >
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
@@ -85,6 +86,7 @@
                 height="150px"
                 :src="snapshot"
                 style="text-align:center;"
+                @click="loadViewer(card)"
               >
                 <template v-slot:placeholder>
                   <v-row
@@ -119,6 +121,7 @@
             color="#DCDCDC"
             v-if="card.type == 'doc'"
             style="text-align: center;"
+            @click="loadViewer(card)"
           >
             <v-icon large center style="top: 1em;"> mdi-file-document </v-icon>
             <v-card-title>
@@ -135,6 +138,7 @@
             color="#DCDCDC"
             v-if="card.type == 'app'"
             style="text-align: center;"
+            @click="loadViewer(card)"
           >
             <v-icon large center style="top: 1em;">
               mdi-application
@@ -153,6 +157,7 @@
             color="#DCDCDC"
             v-if="card.type == 'audio'"
             style="text-align: center;"
+            @click="loadViewer(card)"
           >
             <v-icon large center style="top: 1em;">
               mdi-music
@@ -167,11 +172,21 @@
             </v-card-title>
           </v-sheet>
           <v-card-actions style="background: transparent;">
-            <v-icon v-if="card.type == 'video'">mdi-movie</v-icon>
-            <v-icon v-else-if="card.type == 'image'">mdi-camera</v-icon>
-            <v-icon v-else-if="card.type == 'doc'">mdi-file-document</v-icon>
-            <v-icon v-else-if="card.type == 'app'">mdi-application</v-icon>
-            <v-icon v-else-if="card.type == 'audio'">mdi-music</v-icon>
+            <v-icon v-if="card.type == 'video'" @click="loadViewer(card)"
+              >mdi-movie</v-icon
+            >
+            <v-icon v-else-if="card.type == 'image'" @click="loadViewer(card)"
+              >mdi-camera</v-icon
+            >
+            <v-icon v-else-if="card.type == 'doc'" @click="loadViewer(card)"
+              >mdi-file-document</v-icon
+            >
+            <v-icon v-else-if="card.type == 'app'" @click="loadViewer(card)"
+              >mdi-application</v-icon
+            >
+            <v-icon v-else-if="card.type == 'audio'" @click="loadViewer(card)"
+              >mdi-music</v-icon
+            >
 
             <v-spacer></v-spacer>
 
@@ -180,7 +195,7 @@
               v-clipboard:copy="card.link"
               v-clipboard:success="copied"
             >
-              <v-icon>mdi-share-variant</v-icon>
+              <v-icon color="success">mdi-share-variant</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>
