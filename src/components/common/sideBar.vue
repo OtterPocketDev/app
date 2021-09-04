@@ -206,7 +206,7 @@
       timeout="-1"
     >
       <v-icon>mdi-table-arrow-up</v-icon>
-      Waiting for blockhain transaction...
+      Waiting for blockchain transaction...
 
       <v-btn color="black" text v-if="blockchainTX">
         <a :href="`https://polygonscan.com/tx/${blockchainTX}`">TX</a>

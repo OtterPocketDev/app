@@ -14,7 +14,7 @@
       label="Search by name"
       solo
       hide-details
-      style="max-width: 400px;"
+      style="max-width: 200px;"
     ></v-text-field>
     <v-spacer></v-spacer>
     <v-btn v-if="!metaMaskInstalled" href="https://metamask.io/">
@@ -24,15 +24,23 @@
     <v-btn
       v-if="!connectedToWeb3 && metaMaskInstalled"
       @click="$emit('connect')"
+      :icon="!$vuetify.breakpoint.lgAndUp"
     >
       <v-icon left color="error">mdi-login-variant</v-icon>
-      <div style="color:#ff5252;">Connect</div>
+      <div style="color:#ff5252;" v-if="$vuetify.breakpoint.lgAndUp">
+        Connect
+      </div>
     </v-btn>
-    <v-btn v-if="connectedToWeb3 && onPolygonNetwork">
+    <v-btn
+      v-if="connectedToWeb3 && onPolygonNetwork"
+      :icon="!$vuetify.breakpoint.lgAndUp"
+    >
       <v-icon medium color="success" left
         >mdi-checkbox-marked-circle-outline</v-icon
       >
-      <div style="color:#4caf50;">Connected</div>
+      <div style="color:#4caf50;" v-if="$vuetify.breakpoint.lgAndUp">
+        Connected
+      </div>
     </v-btn>
     <v-btn
       v-if="connectedToWeb3 && metaMaskInstalled && !onPolygonNetwork"

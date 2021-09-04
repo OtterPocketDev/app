@@ -8,7 +8,7 @@
     />
 
     <v-card
-      style="justify-self: center; min-height: 100vh"
+      style="justify-self: center; min-height: 100vh; overflow: hidden;"
       class="main-wrapper"
     >
       <ToolBar
