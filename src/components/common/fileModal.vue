@@ -15,11 +15,6 @@
         </template>
         <v-list>
           <v-list-item>
-            <v-btn v-clipboard:copy="card.link" v-clipboard:success="copied"
-              >OtterPocket</v-btn
-            >
-          </v-list-item>
-          <v-list-item>
             <v-btn
               v-clipboard:copy="`https://ipfs.infura.io/ipfs/${card.hash}`"
               v-clipboard:success="copied"
