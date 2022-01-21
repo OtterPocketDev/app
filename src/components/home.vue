@@ -319,7 +319,7 @@ export default {
           } else {
             file.type = FileType.APP;
           }
-          let baseLink = `https://otterpocket.mypinata.cloud/ipfs/${file.hash}`;
+          let baseLink = `https://ipfs.infura.io/ipfs/${file.hash}`;
           file.timestamp = parseInt(file.timestamp);
           file.timestamp = new Date(file.timestamp * 1000);
           file.timestamp = file.timestamp.toLocaleString();

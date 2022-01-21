@@ -3,7 +3,7 @@
     <a href="https://otterpocket.io" v-if="!connectedToWeb3">
       <v-img
         style="max-width: 3em;"
-        src="https://otterpocket.mypinata.cloud/ipfs/QmY1JQjFyudsNBTwm6meyBCY2kbuf6ChcdkSpLnqQoLLfJ"
+        src="https://ipfs.infura.io/ipfs/QmY1JQjFyudsNBTwm6meyBCY2kbuf6ChcdkSpLnqQoLLfJ"
       ></v-img
     ></a>
 

@@ -55,7 +55,7 @@
         <a href="https://otterpocket.io">
           <v-img
             style="max-width: 10em; margin: 0 auto; border-radius: 1em;"
-            src="https://otterpocket.mypinata.cloud/ipfs/QmZ69cbn7XfakmSm3AX4g6Gf7BDhaGoaFsyn6wAYLx5Nd6"
+            src="https://ipfs.infura.io/ipfs/QmZ69cbn7XfakmSm3AX4g6Gf7BDhaGoaFsyn6wAYLx5Nd6"
           ></v-img
         ></a>
 
@@ -123,7 +123,7 @@
         <a href="https://otterpocket.io">
           <v-img
             style="max-width: 10em; margin: 1em auto; border-radius: 1em;"
-            src="https://otterpocket.mypinata.cloud/ipfs/QmZ69cbn7XfakmSm3AX4g6Gf7BDhaGoaFsyn6wAYLx5Nd6"
+            src="https://ipfs.infura.io/ipfs/ipfs/QmZ69cbn7XfakmSm3AX4g6Gf7BDhaGoaFsyn6wAYLx5Nd6"
           ></v-img
         ></a>
 
@@ -239,14 +239,14 @@ export default {
           title: `${this.web3Data.maticBalance} Matic`,
           icon: "",
           image:
-            "https://otterpocket.mypinata.cloud/ipfs/Qmer6oGSe9SC42NHpV4HkvVWPFG8m89RhtLPRMZoievKKc",
+            "https://ipfs.infura.io/ipfs/Qmer6oGSe9SC42NHpV4HkvVWPFG8m89RhtLPRMZoievKKc",
           link: "https://www.binance.com/en/buy-Polygon-Matic",
         },
         {
           title: `${this.web3Data.otterBalance} Otter`,
           icon: "",
           image:
-            "https://otterpocket.mypinata.cloud/ipfs/QmY1JQjFyudsNBTwm6meyBCY2kbuf6ChcdkSpLnqQoLLfJ",
+            "https://ipfs.infura.io/ipfs/QmY1JQjFyudsNBTwm6meyBCY2kbuf6ChcdkSpLnqQoLLfJ",
           link:
             "https://quickswap.exchange/#/swap?outputCurrency=0xe718eda678aff3f8d1592e784652bcbeeb49e352",
         },
